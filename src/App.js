@@ -23,10 +23,8 @@ export default function App() {
   const [amount, setAmount] = useState(0);
   const [leverage, setLeverage] = useState(0);
 
-  const [profitLong, setProfitLong] = useState(0);
-  const [profitShort, setProfitShort] = useState(0);
-  const [lossLong, setLossLong] = useState(0);
-  const [lossShort, setLossShort] = useState(0);
+  const [profit, setProfit] = useState(0);
+  const [loss, setLoss] = useState(0);
 
   useEffect(() => {
     if (entry) {
@@ -34,12 +32,13 @@ export default function App() {
       setSlPriceLong(slLong.toFixed(4));
       const tpLong = (Number(entry) * (100 + Number(tpP))) / 100;
       setTpPriceLong(tpLong.toFixed(4));
-      const slShort = (Number(entry) * (100 - Number(slP))) / 100;
+      const slShort = (Number(entry) * (100 + Number(slP))) / 100;
       setSlPriceShort(slShort.toFixed(4));
-      const tpShort = (Number(entry) * (100 + Number(tpP))) / 100;
+      const tpShort = (Number(entry) * (100 - Number(tpP))) / 100;
       setTpPriceShort(tpShort.toFixed(4));
 
-      setProfitLong((Number(amount) * Number(tpP) * Number(leverage)) / 100);
+      setProfit((Number(amount) * Number(tpP) * Number(leverage)) / 100);
+      setLoss((Number(amount) * Number(slP) * Number(leverage)) / 100);
     }
   }, [slP, tpP, entry, amount, leverage]);
 
@@ -131,9 +130,7 @@ export default function App() {
               <Text fontSize="lg" className="eqw">
                 SL Long
               </Text>
-              <Text fontSize="md" color="red.600" fontWeight="bold">
-                {lossLong}
-              </Text>
+
               <Text
                 fontSize="lg"
                 className="eqw"
@@ -146,9 +143,7 @@ export default function App() {
               <Text fontSize="lg" className="eqw">
                 TP Long
               </Text>
-              <Text fontSize="md" color="green.600" fontWeight="bold">
-                {profitLong}
-              </Text>
+
               <Text
                 fontSize="lg"
                 className="eqw"
@@ -167,9 +162,7 @@ export default function App() {
               <Text fontSize="lg" className="eqw">
                 SL Short
               </Text>
-              <Text fontSize="md" color="green.600" fontWeight="bold">
-                {profitShort}
-              </Text>
+
               <Text
                 fontSize="lg"
                 className="eqw"
@@ -183,15 +176,40 @@ export default function App() {
               <Text fontSize="lg" className="eqw">
                 TP Short
               </Text>
-              <Text fontSize="md" color="red.600" fontWeight="bold">
-                {lossShort}
-              </Text>
+
               <Text
                 fontSize="lg"
                 className="eqw"
                 onClick={() => copyToClipboard(tpPriceShort)}
               >
                 {tpPriceShort}
+              </Text>
+            </div>
+          </div>
+        </Box>
+        <Box
+          borderWidth="1px"
+          padding="15px"
+          backgroundColor="gray.100"
+          marginTop="5px"
+        >
+          <div className="row res">
+            {/* <ArrowDownIcon /> */}
+            <div className="row eqw">
+              <Text fontSize="lg" className="eqw">
+                Profit
+              </Text>
+              <Text fontSize="md" color="green.600" fontWeight="bold">
+                {profit}
+              </Text>
+            </div>
+
+            <div className="row eqw">
+              <Text fontSize="lg" className="eqw">
+                Loss
+              </Text>
+              <Text fontSize="md" color="red.600" fontWeight="bold">
+                {loss}
               </Text>
             </div>
           </div>
