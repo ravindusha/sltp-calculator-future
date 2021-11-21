@@ -102,7 +102,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="col">
+      <Flex direction="column">
         <Flex
           direction="row"
           justifyContent="space-between"
@@ -110,30 +110,39 @@ export default function App() {
           alignItems="center"
           padding="5px"
         >
-          <Text fontSize="xl">Entry</Text>
-          <Input
-            type="text"
-            onChange={(e) => setEntry(e.target.value)}
-            value={entry}
-            width="300px"
-          />
-          <Text fontSize="xl">Amount</Text>
-          <Input
-            type="text"
-            onChange={(e) => setAmount(e.target.value)}
-            value={amount}
-            width="200px"
-          />
-          <Text fontSize="xl">Leverage</Text>
-          <InputGroup width="200px">
+          <Flex direction="row">
+            <Text fontSize="xl">Entry</Text>
+            <InputGroup minWidth="100px" maxWidth="200px">
+              <Input
+                type="text"
+                onChange={(e) => setEntry(e.target.value)}
+                value={entry}
+                width="200px"
+              />
+              <InputRightAddon children="Price" />
+            </InputGroup>
+          </Flex>
+          <Flex direction="row">
+            <Text fontSize="xl">Amount</Text>
             <Input
               type="text"
-              onChange={(e) => setLeverage(e.target.value)}
-              value={leverage}
+              onChange={(e) => setAmount(e.target.value)}
+              value={amount}
               width="100px"
             />
-            <InputRightAddon children="&times;" />
-          </InputGroup>
+          </Flex>
+          <Flex direction="row">
+            <Text fontSize="xl">Leverage</Text>
+            <InputGroup minWidth="100px" maxWidth="200px">
+              <Input
+                type="text"
+                onChange={(e) => setLeverage(e.target.value)}
+                value={leverage}
+                width="100px"
+              />
+              <InputRightAddon children="&times;" />
+            </InputGroup>
+          </Flex>
         </Flex>
         <Box borderWidth="1px" padding="15px">
           <div className="row res">
@@ -337,7 +346,7 @@ export default function App() {
             </div>
           </div>
         </Box>
-      </div>
+      </Flex>
     </div>
   );
 }
