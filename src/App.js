@@ -35,10 +35,10 @@ export default function App() {
 
   useEffect(() => {
     if (entry) {
-      setSlPriceForShort(0);
-      setTpPriceForShort(0);
-      setSlPriceForLong(0);
-      setTpPriceForLong(0);
+      // setSlPriceForShort(0);
+      // setTpPriceForShort(0);
+      // setSlPriceForLong(0);
+      // setTpPriceForLong(0);
 
       const slLong = (Number(entry) * (100 - Number(slPercentage))) / 100;
       setSlPriceLong(slLong.toFixed(4));
