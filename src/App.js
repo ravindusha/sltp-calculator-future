@@ -108,10 +108,12 @@ export default function App() {
           justifyContent="space-between"
           marginTop="10px"
           alignItems="center"
-          padding="5px"
+          marginBottom="5px"
         >
-          <Flex direction="row">
-            <Text fontSize="xl">Entry</Text>
+          <Flex direction="row" alignItems="center">
+            <Text fontSize="xl" paddingRight="5px">
+              Entry
+            </Text>
             <InputGroup minWidth="100px" maxWidth="200px">
               <Input
                 type="text"
@@ -122,8 +124,10 @@ export default function App() {
               <InputRightAddon children="Price" />
             </InputGroup>
           </Flex>
-          <Flex direction="row">
-            <Text fontSize="xl">Amount</Text>
+          <Flex direction="row" alignItems="center">
+            <Text fontSize="xl" paddingRight="5px">
+              Amount
+            </Text>
             <Input
               type="text"
               onChange={(e) => setAmount(e.target.value)}
@@ -131,8 +135,10 @@ export default function App() {
               width="100px"
             />
           </Flex>
-          <Flex direction="row">
-            <Text fontSize="xl">Leverage</Text>
+          <Flex direction="row" alignItems="center">
+            <Text fontSize="xl" paddingRight="5px">
+              Leverage
+            </Text>
             <InputGroup minWidth="100px" maxWidth="200px">
               <Input
                 type="text"
